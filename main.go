@@ -10,11 +10,6 @@ import (
 	"path/filepath"
 )
 
-const (
-	anonfiles string = "https://api.anonfiles.com/upload"
-	bayfiles  string = "https://api.bayfiles.com/upload"
-)
-
 func Upload(url string, file *os.File) (Respond, error) {
 	var resjson Respond
 	r, w := io.Pipe()
