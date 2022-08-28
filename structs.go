@@ -30,8 +30,3 @@ type url struct {
 	Full  string `json:"full"`
 	Short string `json:"short"`
 }
-
-const (
-	anonfiles = "https://api.anonfiles.com/upload"
-	bayfiles  = "https://api.bayfiles.com/upload"
-)
