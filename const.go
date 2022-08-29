@@ -1,6 +1,8 @@
 package uploader
 
+type site string
+
 const (
-	anonfiles string = "https://api.anonfiles.com/upload"
-	bayfiles  string = "https://api.bayfiles.com/upload"
+	anonfiles site = "https://api.anonfiles.com/upload"
+	bayfiles  site = "https://api.bayfiles.com/upload"
 )

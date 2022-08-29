@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 )
 
-func Upload(url string, file *os.File) (Respond, error) {
+func Upload(url site, file *os.File) (Respond, error) {
 	var resjson Respond
 	r, w := io.Pipe()
 	m := multipart.NewWriter(w)
@@ -29,7 +29,7 @@ func Upload(url string, file *os.File) (Respond, error) {
 		}
 	}()
 
-	req, err := http.NewRequest(http.MethodPost, url, r)
+	req, err := http.NewRequest(http.MethodPost, string(url), r)
 	req.Header.Add("Content-Type", m.FormDataContentType())
 	if err != nil {
 		return resjson, err
