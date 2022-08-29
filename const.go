@@ -1,6 +1,6 @@
 package uploader
 
-var (
-	anonfiles = "https://api.anonfiles.com/upload"
-	bayfiles  = "https://api.bayfiles.com/upload"
+const (
+	anonfiles string = "https://api.anonfiles.com/upload"
+	bayfiles  string = "https://api.bayfiles.com/upload"
 )
