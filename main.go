@@ -10,7 +10,14 @@ import (
 	"path/filepath"
 )
 
-func Upload(url site, file *os.File) (Respond, error) {
+type Site string
+
+const (
+	AnonFiles Site = "https://api.anonfiles.com/upload"
+	BayFiles  Site = "https://api.bayfiles.com/upload"
+)
+
+func Upload(url Site, file *os.File) (Respond, error) {
 	var resjson Respond
 	r, w := io.Pipe()
 	m := multipart.NewWriter(w)

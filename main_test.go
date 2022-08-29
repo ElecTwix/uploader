@@ -15,7 +15,7 @@ func TestUpload(t *testing.T) {
 		t.Fatal(err.Error())
 	}
 
-	_, err = Upload(bayfiles, file)
+	_, err = Upload(BayFiles, file)
 	if err != nil {
 		t.Fatal(err.Error())
 	}
