@@ -1,6 +1,6 @@
 # 1. Go Uploader
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/ElecTwix/uploader)](https://goreportcard.com/badge/github.com/ElecTwix/uploader) 
+[![Go Report Card](https://goreportcard.com/badge/github.com/ElecTwix/uploader)](https://goreportcard.com/report/github.com/ElecTwix/uploader) 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/ElecTwix/uploader)](https://pkg.go.dev/github.com/ElecTwix/uploader)
 
 
