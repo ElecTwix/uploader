@@ -1,6 +1,7 @@
-# 1. Go Durations
+# 1. Go Uploader
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/ElecTwix/uploader)](https://goreportcard.com/badge/github.com/ElecTwix/uploader) [![PkgGoDev](#)](#)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ElecTwix/uploader)](https://goreportcard.com/badge/github.com/ElecTwix/uploader) 
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/ElecTwix/uploader)](https://pkg.go.dev/github.com/ElecTwix/uploader)
 
 
 ## 1.1. What is this for
