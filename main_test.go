@@ -1,6 +1,7 @@
 package uploader
 
 import (
+	"fmt"
 	"os"
 	"testing"
 )
@@ -15,8 +16,10 @@ func TestUpload(t *testing.T) {
 		t.Fatal(err.Error())
 	}
 
-	_, err = Upload(BayFiles, file)
+	resp, err := Upload(BayFiles, file)
 	if err != nil {
 		t.Fatal(err.Error())
 	}
+
+	fmt.Println(resp)
 }

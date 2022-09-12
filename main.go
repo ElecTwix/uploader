@@ -1,6 +1,7 @@
 package uploader
 
 import (
+	"bytes"
 	"encoding/json"
 	"io"
 	"io/ioutil"
@@ -17,45 +18,45 @@ const (
 	BayFiles  Site = "https://api.bayfiles.com/upload"
 )
 
-func Upload(url Site, file *os.File) (Respond, error) {
+func Upload(url Site, file *os.File) (*Respond, error) {
+
 	var resjson Respond
-	r, w := io.Pipe()
-	m := multipart.NewWriter(w)
+	body := &bytes.Buffer{}
+	writer := multipart.NewWriter(body)
 
-	go func() {
-		defer w.Close()
-		defer m.Close()
-
-		part, err := m.CreateFormFile("file", filepath.Base(file.Name()))
-		if err != nil {
-			return
-		}
-
-		if _, err = io.Copy(part, file); err != nil {
-			return
-		}
-	}()
-
-	req, err := http.NewRequest(http.MethodPost, string(url), r)
-	req.Header.Add("Content-Type", m.FormDataContentType())
+	part, err := writer.CreateFormFile("file", filepath.Base(file.Name()))
 	if err != nil {
-		return resjson, err
+		return nil, err
+	}
+
+	_, err = io.Copy(part, file)
+	err = writer.Close()
+
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, string(url), body)
+	req.Header.Add("Content-Type", writer.FormDataContentType())
+
+	if err != nil {
+		return nil, err
 	}
 
 	client := &http.Client{}
 	res, err := client.Do(req)
 	if err != nil {
-		return resjson, err
+		return nil, err
 	}
 
 	content, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return resjson, err
+		return nil, err
 	}
 
 	err = json.Unmarshal(content, &resjson)
 	if err != nil {
-		return resjson, err
+		return nil, err
 	}
-	return resjson, err
+	return &resjson, err
 }
